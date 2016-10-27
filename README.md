@@ -11,14 +11,19 @@ so there's a bit of work to be done.
 
 ### Install
 
-Clone this repo and run this cron command to fetch rates every minute:
+Clone this repo and install gems:
+
+    git clone https://github.com/nmarley/rate-service.git && cd rate-service
+    bundle install --binstubs --path vendor
+
+Run this cron command to fetch rates every minute:
 
     # m h  dom mon dow   command
     * * * * * /bin/bash <path-to-repo>/fetch-current-rates.sh >/dev/null 2>&1
 
 Run the sinatra app using whatever deployment method:
 
-    ruby rate.rb &
+    bundle exec puma config.ru &
 
 You can put this behind an nginx reverse proxy:
 
@@ -37,7 +42,6 @@ You can put this behind an nginx reverse proxy:
             proxy_pass http://rate;
           }
       }
-
 
 ### TODO
 
