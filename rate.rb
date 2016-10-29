@@ -56,9 +56,9 @@ def make_payload(h)
   return payload.to_json
 end
 
-def is_fiat( currency )
+def is_fiat(currency)
   h = load_btc_fiat
-  h.keys.include?( currency )
+  h.keys.include?(currency)
 end
 
 # TODO: fix
@@ -66,7 +66,7 @@ def is_crypto(currency)
   h = load_poloniex
   poloniex_alts = h.keys.grep(/^_BTC/).map { |e| e.sub(/^_BTC/, '') }
   # others = %w[ BTC XBT ]
-  poloniex_alts.include?( currency )
+  poloniex_alts.include?(currency)
 end
 
 def poloniex_has_pair(fxpair)
@@ -96,33 +96,33 @@ get '/rate/:fxpair' do
   fxpair = base + '_' + quote
 
   # do the thing
-  if ( base === quote )
-    payload = make_payload( pair: fxpair, rate: 1 )
+  if (base === quote)
+    payload = make_payload(pair: fxpair, rate: 1)
 
-  elsif ( is_fiat( base ) )
-    payload = make_payload( err: 'Fiat base pairs are not supported.' )
+  elsif (is_fiat(base))
+    payload = make_payload(err: 'Fiat base pairs are not supported.')
 
-  elsif ( poloniex_has_pair(fxpair) )
-    payload = make_payload( pair: fxpair, rate: poloniex_pair(fxpair) )
+  elsif (poloniex_has_pair(fxpair))
+    payload = make_payload(pair: fxpair, rate: poloniex_pair(fxpair))
 
-  elsif ( is_crypto(quote) && is_crypto(base) )
+  elsif (is_crypto(quote) && is_crypto(base))
     # in this case, both are alt crypto.
     # get BTC_<alt> rate for each & divide...
     base_rate  = poloniex_pair(base + '_BTC').to_d
     quote_rate = poloniex_pair(quote + '_BTC').to_d
-    rate = base_rate.to_d * ( 1 / quote_rate )
-    payload = make_payload( pair: fxpair, rate: rate )
+    rate = base_rate.to_d * (1 / quote_rate)
+    payload = make_payload(pair: fxpair, rate: rate)
 
-  elsif ( is_fiat( quote ) )
-    if ( base === 'BTC' )
+  elsif (is_fiat(quote))
+    if (base === 'BTC')
       rate = btc_fiat_rate(quote).to_d
     else
       rate = poloniex_pair(base + '_BTC').to_d * btc_fiat_rate(quote).to_d
     end
-    payload = make_payload( pair: fxpair, rate: rate )
+    payload = make_payload(pair: fxpair, rate: rate)
 
   else
-    payload = make_payload( err: "FX Pair [#{fxpair}] unsupported." )
+    payload = make_payload(err: "FX Pair [#{fxpair}] unsupported.")
   end
 
   return payload
