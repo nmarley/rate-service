@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/json'
 require 'json'
 require 'bigdecimal'
@@ -6,8 +6,6 @@ require 'bigdecimal/util'
 require 'pp'
 require 'awesome_print'
 require 'httparty'
-
-set :port, 4568
 
 # Microservice REST API for Dash price to whatever FIAT currency, and BTC.
 #
@@ -127,14 +125,22 @@ def get_rates(fxpair)
 end
 
 
-# enable .json extension
-get '/rate/:fxpair.json' do
-  content_type :json
-  return get_rates(params[:fxpair].strip.upcase)
-end
+class RateService < Sinatra::Base
+  set :port, 4568
 
-# default without extension
-get '/rate/:fxpair' do
-  content_type :json
-  return get_rates(params[:fxpair].strip.upcase)
+  # enable .json extension
+  get '/rate/:fxpair.json' do
+    content_type :json
+    return get_rates(params[:fxpair].strip.upcase)
+  end
+
+  # default without extension
+  get '/rate/:fxpair' do
+    content_type :json
+    return get_rates(params[:fxpair].strip.upcase)
+  end
+
+  # $0 is the executed file
+  # __FILE__ is the current file
+  run! if __FILE__ == $0
 end
