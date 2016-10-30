@@ -142,6 +142,11 @@ class RateService < Sinatra::Base
     return get_rates(params[:fxpair].strip.upcase)
   end
 
+  get '/*' do
+    content_type :json
+    return make_payload(err: "Sorry, that path is not defined.")
+  end
+
   # $0 is the executed file
   # __FILE__ is the current file
   run! if __FILE__ == $0
