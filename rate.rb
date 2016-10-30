@@ -17,6 +17,9 @@ require 'httparty'
 # nginx. This should scale like crazy.
 
 # TODO: separate exchange rate logic & sinatra service
+# TODO: ensure BigDecimal used throughout here, from input on...
+#       output should use: d.round(8).to_s('8F')
+
 
 # previously: load_btc_fiat
 def load_bitcoinaverage
@@ -39,6 +42,7 @@ end
 ::TICKER_CHANGES = {
   'XBT' => 'BTC',
   'DRK' => 'DASH',
+  'DSH' => 'DASH',
 }
 
 def normalize_ticker_string(ticker)
@@ -51,7 +55,7 @@ def make_payload(h)
   if h.has_key?(:err)
     payload = { success: false, error: h[:err] }
   else
-    payload = { success: true, quote: h[:pair], rate: h[:rate].to_f.round(8) }
+    payload = { success: true, quote: h[:pair], rate: h[:rate].round(8).to_s('8F') }
   end
 
   return payload.to_json
@@ -77,12 +81,12 @@ end
 
 def poloniex_pair(fxpair)
   h = load_poloniex
-  h[fxpair]['last']
+  return h[fxpair]['last'].to_d
 end
 
 def btc_fiat_rate(currency)
   h = load_bitcoinaverage
-  h[currency]['last']
+  return h[currency]['last'].to_d
 end
 
 def get_rates(fxpair)
@@ -95,7 +99,7 @@ def get_rates(fxpair)
 
   # do the thing
   if (base === quote)
-    payload = make_payload(pair: fxpair, rate: 1)
+    payload = make_payload(pair: fxpair, rate: BigDecimal.new(1))
 
   elsif (is_fiat(base))
     payload = make_payload(err: 'Fiat base pairs are not supported.')
@@ -108,14 +112,14 @@ def get_rates(fxpair)
     # get BTC_<alt> rate for each & divide...
     base_rate  = poloniex_pair(base + '_BTC').to_d
     quote_rate = poloniex_pair(quote + '_BTC').to_d
-    rate = base_rate.to_d * (1 / quote_rate)
+    rate = base_rate * (1.0 / quote_rate)
     payload = make_payload(pair: fxpair, rate: rate)
 
   elsif (is_fiat(quote))
     if (base === 'BTC')
-      rate = btc_fiat_rate(quote).to_d
+      rate = btc_fiat_rate(quote)
     else
-      rate = poloniex_pair(base + '_BTC').to_d * btc_fiat_rate(quote).to_d
+      rate = poloniex_pair(base + '_BTC') * btc_fiat_rate(quote)
     end
     payload = make_payload(pair: fxpair, rate: rate)
 
