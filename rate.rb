@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/json'
 require 'json'
 require 'bigdecimal'
 require 'bigdecimal/util'
@@ -84,10 +85,7 @@ def btc_fiat_rate(currency)
   h[currency]['last']
 end
 
-get '/rate/:fxpair' do
-  content_type :json
-  fxpair  = params[:fxpair].strip.upcase
-
+def get_rates(fxpair)
   base, quote = fxpair.split /_/
 
   # standardize any inconsistencies in currency ticker names
@@ -129,3 +127,14 @@ get '/rate/:fxpair' do
 end
 
 
+# enable .json extension
+get '/rate/:fxpair.json' do
+  content_type :json
+  return get_rates(params[:fxpair].strip.upcase)
+end
+
+# default without extension
+get '/rate/:fxpair' do
+  content_type :json
+  return get_rates(params[:fxpair].strip.upcase)
+end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra', '~> 1.4.7'
+gem 'sinatra-contrib', '~> 1.4.7'
 gem 'pg', '~> 0.19.0'
 gem 'puma', '~> 3.6.0'
 gem 'httparty', '~> 0.14.0'
