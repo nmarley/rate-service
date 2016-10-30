@@ -23,12 +23,12 @@ Run this cron command to fetch rates every minute:
 
 Run the sinatra app using whatever deployment method:
 
-    bundle exec puma config.ru &
+    bundle exec puma -C puma.rb config.ru &
 
 You can put this behind an nginx reverse proxy:
 
       upstream rate {
-        server 127.0.0.1:4567;
+        server 127.0.0.1:4568;
       }
 
       server {
