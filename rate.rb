@@ -18,7 +18,9 @@ require 'httparty'
 
 # TODO: separate exchange rate logic & sinatra service
 
-def load_btc_fiat
+# previously: load_btc_fiat
+def load_bitcoinaverage
+  # https://api.bitcoinaverage.com/ticker/global/all
   h = JSON.parse(File.read('ba_global_all.json'))
   h.delete("BTC")
   ts = h.delete("timestamp")
@@ -39,7 +41,7 @@ end
   'DRK' => 'DASH',
 }
 
-def update_ticker(ticker)
+def normalize_ticker_string(ticker)
   ::TICKER_CHANGES.has_key?(ticker) ? ::TICKER_CHANGES[ticker] : ticker
 end
 
@@ -56,7 +58,7 @@ def make_payload(h)
 end
 
 def is_fiat(currency)
-  h = load_btc_fiat
+  h = load_bitcoinaverage
   h.keys.include?(currency)
 end
 
@@ -79,7 +81,7 @@ def poloniex_pair(fxpair)
 end
 
 def btc_fiat_rate(currency)
-  h = load_btc_fiat
+  h = load_bitcoinaverage
   h[currency]['last']
 end
 
@@ -87,8 +89,8 @@ def get_rates(fxpair)
   base, quote = fxpair.split /_/
 
   # standardize any inconsistencies in currency ticker names
-  base  = update_ticker(base)
-  quote = update_ticker(quote)
+  base  = normalize_ticker_string(base)
+  quote = normalize_ticker_string(quote)
   fxpair = base + '_' + quote
 
   # do the thing
