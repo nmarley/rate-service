@@ -134,20 +134,16 @@ end
 class RateService < Sinatra::Base
   set :port, 4568
 
-  # enable .json extension
-  get '/rate/:fxpair.json' do
+  before do
     content_type :json
-    return get_rates(params[:fxpair].strip.upcase)
   end
 
-  # default without extension
-  get '/rate/:fxpair' do
-    content_type :json
+  # /rate/:fxpair(.ext)?
+  get '/rate/:fxpair.?:format?' do
     return get_rates(params[:fxpair].strip.upcase)
   end
 
   get '/*' do
-    content_type :json
     return make_payload(err: "Sorry, that path is not defined.")
   end
 
