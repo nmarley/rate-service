@@ -10,6 +10,7 @@ gem 'byebug', '~> 9.0.6'
 gem 'capistrano', '~> 3.6.1'
 gem 'capistrano-bundler', '~> 1.2.0'
 gem 'capistrano3-puma', '~> 1.2.1'
+gem 'redis', '~> 3.3.1'
 
 group :test do
   gem 'minitest', '~> 5.9'
