@@ -14,6 +14,7 @@ def load_bitcoinaverage(redis, data)
     h['rates'].delete(tick)
   end
 
+  # flush all current USD keys -- need a better way of implementing updates
   fiat_keys = redis.keys('USD_*')
   fiat_keys.each do |key|
     redis.del key
@@ -35,7 +36,4 @@ redis = Redis.new
 fn = 'ba2_global_all.json'
 data = File.read(fn)
 load_bitcoinaverage(redis, data)
-
-#def is_fiat(ticker)
-#end
 
