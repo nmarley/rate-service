@@ -6,6 +6,8 @@ require 'bigdecimal/util'
 require 'pp'
 require 'awesome_print'
 require 'httparty'
+require 'redis'
+require 'byebug'
 
 # Microservice REST API for Dash price to whatever FIAT currency, and BTC.
 #
@@ -24,7 +26,10 @@ require 'httparty'
 # previously: load_btc_fiat
 def load_bitcoinaverage
   # https://api.bitcoinaverage.com/ticker/global/all
+
   h = JSON.parse(File.read('ba_global_all.json'))
+
+
   h.delete("BTC")
   ts = h.delete("timestamp")
   return h
@@ -154,6 +159,7 @@ end
 
 class RateService < Sinatra::Base
   set :port, 4568
+  redis = Redis.new
 
   before do
     content_type :json
