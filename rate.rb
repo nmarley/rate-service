@@ -67,11 +67,18 @@ def is_fiat(currency)
 end
 
 # TODO: fix
-def is_crypto(currency)
+def is_crypto(currency, include_btc = false)
+  crypto_currency_tickers = []
   h = load_poloniex
   poloniex_alts = h.keys.grep(/^_BTC/).map { |e| e.sub(/^_BTC/, '') }
-  # others = %w[ BTC XBT ]
-  poloniex_alts.include?(currency)
+
+  crypto_currency_tickers += poloniex_alts
+
+  if (include_btc)
+    crypto_currency_tickers.push('BTC')
+  end
+
+  return crypto_currency_tickers.include?(currency)
 end
 
 def poloniex_has_pair(fxpair)
@@ -89,6 +96,11 @@ def btc_fiat_rate(currency)
   return h[currency]['last'].to_d
 end
 
+def is_valid_ticker_string(ticker_string)
+  return is_fiat(ticker_string) || is_crypto(ticker_string, true)
+end
+
+# fetch the rate info from DB, calculate & return
 def get_rates(fxpair)
   base, quote = fxpair.split /_/
 
@@ -96,6 +108,15 @@ def get_rates(fxpair)
   base  = normalize_ticker_string(base)
   quote = normalize_ticker_string(quote)
   fxpair = base + '_' + quote
+
+  # check validity of base/quote
+  if (not is_valid_ticker_string(base))
+    return make_payload(err: "#{base} is not a valid currency ticker string")
+  end
+  if (not is_valid_ticker_string(quote))
+    return make_payload(err: "#{quote} is not a valid currency ticker string")
+  end
+
 
   # do the thing
   if (base === quote)
