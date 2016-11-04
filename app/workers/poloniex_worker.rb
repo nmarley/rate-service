@@ -1,3 +1,4 @@
+require 'sidekiq'
 require 'rate_source'
 
 class PoloniexWorker
