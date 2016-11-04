@@ -37,6 +37,10 @@ class RateSource
     end
   end
 
+  def fetch_and_load
+    load fetch
+  end
+
   def api_url; end
 end
 
@@ -87,18 +91,5 @@ class BitcoinAverageAPI < RateSource
 
     return newhash
   end
-end
-
-
-redis = Redis.new
-
-data_source_klasses = [ BitcoinAverageAPI, PoloniexAPI ]
-
-# these fetches can possibly be parallelized
-data_source_klasses.each do |klass|
-  byebug
-  source = klass.new(redis)
-  data = source.fetch
-  source.load(data)
 end
 
