@@ -14,6 +14,7 @@ gem 'redis', '~> 3.3.1'
 gem 'faraday', '~> 0.9.2'
 gem 'sidekiq', '~> 4.2.4'
 gem 'clockwork', '~> 2.0.0'
+gem 'redis-namespace', '~> 1.5.2'
 
 group :test do
   gem 'minitest', '~> 5.9'
