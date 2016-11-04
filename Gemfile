@@ -13,6 +13,7 @@ gem 'capistrano3-puma', '~> 1.2.1'
 gem 'redis', '~> 3.3.1'
 gem 'faraday', '~> 0.9.2'
 gem 'sidekiq', '~> 4.2.4'
+gem 'clockwork', '~> 2.0.0'
 
 group :test do
   gem 'minitest', '~> 5.9'
