@@ -63,6 +63,9 @@ class PoloniexAPI < RateSource
       newhash[newkey] = newval
     end
 
+    # Bitcoin in terms of Bitcoin
+    newhash['BTC_BTC'] = '1'
+
     return newhash
   end
 end

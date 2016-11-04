@@ -19,7 +19,7 @@ module RateHelpers
   def is_crypto(ticker)
     ticker = ticker.upcase.strip
     nk = "BTC_#{ticker}"
-    return !($redis.get(nk).nil?) || (ticker === 'BTC')
+    return !($redis.get(nk).nil?)  # || (ticker === 'BTC')
   end
 
   TICKER_CHANGES = {
