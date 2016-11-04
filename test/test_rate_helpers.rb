@@ -8,6 +8,8 @@ class TestRateHelpers < Minitest::Test
 
   def setup
     $redis = Redis.new
+    # $redis.flushall  # once using redis-namespace...
+
     @fiat_tickers = %w[ CNY USD CAD ZAR HKD ]
     @crypto_tickers = %w[ BTC LTC DASH XMR MAID ETH ]
   end
