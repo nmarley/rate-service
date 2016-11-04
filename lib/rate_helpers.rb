@@ -29,7 +29,7 @@ module RateHelpers
   }
 
   def normalize_ticker_string(ticker)
-    TICKER_CHANGES.has_key?(ticker) ? TICKER_CHANGES[ticker] : ticker
+    return TICKER_CHANGES.has_key?(ticker) ? TICKER_CHANGES[ticker] : ticker
   end
 
   def is_valid_ticker_string(ticker_string)
