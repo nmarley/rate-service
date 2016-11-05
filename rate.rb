@@ -166,6 +166,7 @@ class RateService < Sinatra::Base
 
   # /rate/:fxpair(.ext)?
   get '/rate/:fxpair.?:format?' do
+    puts "my env: [#{settings.environment}]"
     return get_rates(params[:fxpair].strip.upcase)
   end
 
