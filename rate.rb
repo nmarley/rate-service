@@ -1,11 +1,10 @@
 require 'sinatra/base'
-require 'sinatra/json'
+#require 'sinatra/json'
 require 'json'
 require 'bigdecimal'
 require 'bigdecimal/util'
 require 'pp'
 require 'awesome_print'
-require 'httparty'
 require 'redis'
 require 'byebug'
 
