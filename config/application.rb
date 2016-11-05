@@ -1,4 +1,4 @@
 $:.push('lib')
-$:.push('app/workers')
+$:.push('lib/workers')
 require 'bitcoin_average_worker'
 require 'poloniex_worker'
