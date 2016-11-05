@@ -8,8 +8,8 @@ gem 'redis', '~> 3.3.1'
 gem 'redis-namespace', '~> 1.5.2'
 gem 'faraday', '~> 0.9.2'
 gem 'sidekiq', '~> 4.2.4'
+gem 'clockwork', '~> 2.0.0'
 # gem 'stoplight', '~> 2.1.0'
-# gem 'clockwork', '~> 2.0.0'
 
 # deployment
 gem 'capistrano', '~> 3.6.1'

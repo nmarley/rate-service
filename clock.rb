@@ -1,9 +1,5 @@
 require 'clockwork'
-# /Users/nmarley/Dash/code/rate-service/app/workers
-$:.push('lib')
-$:.push('app/workers')
-require 'bitcoin_average_worker'
-require 'poloniex_worker'
+require File.expand_path('config/application', __dir__)
 
 module Clockwork
   every 1.minute, 'workers' do
