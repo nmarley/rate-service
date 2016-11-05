@@ -1,3 +1,5 @@
+require 'bigdecimal'
+require 'bigdecimal/util'
 require 'faraday'
 require 'uri'
 require 'redis'
@@ -59,7 +61,8 @@ class PoloniexAPI < RateSource
     h.keep_if { |k,v| k.match(/^BTC_/) }
     h.each do |k,v|
       newkey = k
-      newval = v['last']
+      # Poloniex lists rates inverted...
+      newval = (1 / BigDecimal.new(v['last'])).round(12).to_s('12F')
       newhash[newkey] = newval
     end
 
