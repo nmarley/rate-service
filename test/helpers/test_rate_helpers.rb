@@ -1,5 +1,4 @@
-require 'test_helper'
-require 'minitest/autorun'
+require File.expand_path('../../test_helper', __FILE__)
 require 'rate_helpers'
 
 class TestRateHelpers < Minitest::Test

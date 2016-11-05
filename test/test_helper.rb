@@ -1,4 +1,5 @@
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/application', __FILE__)
-require 'minitest'
+# test_helper.rb
+ENV['RACK_ENV'] ||= 'test'
+require 'minitest/autorun'
 
+require File.expand_path('../config/application', __dir__)
