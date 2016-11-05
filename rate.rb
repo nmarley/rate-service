@@ -22,37 +22,6 @@ require 'byebug'
 #       output should use: d.round(8).to_s('8F')
 
 
-# previously: load_btc_fiat
-def load_bitcoinaverage
-  # https://api.bitcoinaverage.com/ticker/global/all
-
-  h = JSON.parse(File.read('ba_global_all.json'))
-
-
-  h.delete("BTC")
-  ts = h.delete("timestamp")
-  return h
-end
-
-def load_poloniex
-  # https://poloniex.com/public?command=returnTicker
-  h = JSON.parse(File.read('polo.json'))
-
-  # poloniex lists the fx pairs backwards... correct them
-  h = h.map { |k,v| [ k.split(/_/).reverse.join('_') , v ] }.to_h
-  h
-end
-
-::TICKER_CHANGES = {
-  'XBT' => 'BTC',
-  'DRK' => 'DASH',
-  'DSH' => 'DASH',
-}
-
-def normalize_ticker_string(ticker)
-  ::TICKER_CHANGES.has_key?(ticker) ? ::TICKER_CHANGES[ticker] : ticker
-end
-
 def make_payload(h)
   payload = {}
 
@@ -65,44 +34,6 @@ def make_payload(h)
   return payload.to_json
 end
 
-def is_fiat(currency)
-  h = load_bitcoinaverage
-  h.keys.include?(currency)
-end
-
-# TODO: fix
-def is_crypto(currency, include_btc = false)
-  crypto_currency_tickers = []
-  h = load_poloniex
-  poloniex_alts = h.keys.grep(/^_BTC/).map { |e| e.sub(/^_BTC/, '') }
-
-  crypto_currency_tickers += poloniex_alts
-
-  if (include_btc)
-    crypto_currency_tickers.push('BTC')
-  end
-
-  return crypto_currency_tickers.include?(currency)
-end
-
-def poloniex_has_pair(fxpair)
-  h = load_poloniex
-  h.has_key?(fxpair)
-end
-
-def poloniex_pair(fxpair)
-  h = load_poloniex
-  return h[fxpair]['last'].to_d
-end
-
-def btc_fiat_rate(currency)
-  h = load_bitcoinaverage
-  return h[currency]['last'].to_d
-end
-
-def is_valid_ticker_string(ticker_string)
-  return is_fiat(ticker_string) || is_crypto(ticker_string, true)
-end
 
 # fetch the rate info from DB, calculate & return
 def get_rates(fxpair)
