@@ -16,6 +16,12 @@ def btc_fiat(redis, fiat)
   return (btc_usd * usd_fiat)
 end
 
+def usd_crypto(redis, crypto)
+  key = "BTC_#{crypto}"
+  btc_crypto = BigDecimal.new(redis.get(key))
+  usd_btc = BigDecimal.new(redis.get('USD_BTC'))
+  return (usd_btc * btc_crypto)
+end
 
 redis = Redis.new
 
@@ -64,4 +70,54 @@ btc_eur  = btc_fiat(redis, 'EUR')
 puts "btc_eur = [#{btc_eur.ep}]"
 ltc_eur = (ltc_btc * btc_eur)
 puts "ltc_eur = [#{ltc_eur.ep}] (one LTC == this many EUR)"
+
+# crypto/crypto == XMR/DASH
+xmr_btc = 1 / BigDecimal.new(redis.get('BTC_XMR'))
+btc_dash  = BigDecimal.new(redis.get('BTC_DASH'))
+xmr_dash = (xmr_btc * btc_dash)
+puts "xmr_dash = [#{xmr_dash.ep}] (one XMR == this many DASH)"
+
+# fiat/fiat == GBP/AUD
+gbp_usd = 1 / BigDecimal.new(redis.get('USD_GBP'))   # invert the base...
+usd_aud = BigDecimal.new(redis.get('USD_AUD')) # do NOT invert the quote...
+gbp_aud = (gbp_usd * usd_aud)
+puts "gbp_aud = [#{gbp_aud.ep}] (one GBP == this many AUD)"
+
+# fiat/fiat == GBP/CAD
+gbp_usd = 1 / BigDecimal.new(redis.get('USD_GBP'))   # invert the base...
+usd_cad = BigDecimal.new(redis.get('USD_CAD')) # do NOT invert the quote...
+gbp_cad = (gbp_usd * usd_cad)
+puts "gbp_cad = [#{gbp_cad.ep}] (one GBP == this many CAD)"
+
+# fiat/fiat == CAD/AUD
+cad_usd = 1 / BigDecimal.new(redis.get('USD_CAD'))   # invert the base...
+usd_aud = BigDecimal.new(redis.get('USD_AUD')) # do NOT invert the quote...
+cad_aud = (cad_usd * usd_aud)
+puts "cad_aud = [#{cad_aud.ep}] (one CAD == this many AUD)"
+
+# fiat/fiat == USD/CAD
+usd_usd = 1 / BigDecimal.new(redis.get('USD_USD'))   # invert the base...
+usd_cad = BigDecimal.new(redis.get('USD_CAD')) # do NOT invert the quote...
+usd_cad = (usd_usd * usd_cad)
+puts "usd_cad = [#{usd_cad.ep}] (one USD == this many CAD)"
+
+# fiat/fiat == CAD/USD
+cad_usd = 1 / BigDecimal.new(redis.get('USD_CAD'))   # invert the base...
+usd_usd = BigDecimal.new(redis.get('USD_USD')) # do NOT invert the quote...
+cad_usd = (cad_usd * usd_usd)
+puts "cad_usd = [#{cad_usd.ep}] (one CAD == this many USD)"
+
+# fiat/crypto == CAD/BTC
+cad_usd = 1 / BigDecimal.new(redis.get('USD_CAD'))   # invert the base...
+usd_btc = usd_crypto(redis, 'BTC')
+puts "usd_btc = [#{usd_btc.ep}], inverted: [#{(1 / usd_btc).ep}]"
+cad_btc = (cad_usd * usd_btc)
+puts "cad_btc = [#{cad_btc.ep}] (one CAD == this many BTC)"
+
+# fiat/crypto == EUR/DASH
+eur_usd = 1 / BigDecimal.new(redis.get('USD_EUR'))   # invert the base...
+usd_dash = usd_crypto(redis, 'DASH')
+puts "usd_dash = [#{usd_dash.ep}], inverted: [#{(1 / usd_dash).ep}]"
+eur_dash = (eur_usd * usd_dash)
+puts "eur_dash = [#{eur_dash.ep}] (one EUR == this many DASH)"
 
