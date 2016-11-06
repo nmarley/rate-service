@@ -20,12 +20,14 @@ include RateHelpers
 #
 
 def make_payload(h)
-  payload = {}
+  payload = {
+    server_ts: Time.now.getutc.xmlschema,
+  }
 
   if h.has_key?(:err)
-    payload = { success: false, error: h[:err] }
+    payload.merge!({success: false, error: h[:err]})
   else
-    payload = { success: true, quote: h[:pair], rate: h[:rate].round(8).to_s('8F') }
+    payload.merge!({success: true, quote: h[:pair], rate: h[:rate].round(8).to_s('8F')})
   end
 
   return payload.to_json
@@ -63,7 +65,6 @@ class RateService < Sinatra::Base
 
   # /rate/:fxpair(.ext)?
   get '/rate/:fxpair.?:format?' do
-    puts "my env: [#{settings.environment}]"
     return get_rates(params[:fxpair].strip.upcase)
   end
 
