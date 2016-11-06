@@ -1,26 +1,23 @@
 require 'sinatra/base'
-#require 'sinatra/json'
+require 'sinatra/json'
 require 'json'
 require 'bigdecimal'
 require 'bigdecimal/util'
 require 'pp'
 require 'awesome_print'
-require 'redis'
 require 'byebug'
+require File.expand_path('config/application', __dir__)
+require 'rate_helpers'
+
+# TODO: class with all this encapsulated
+include RateHelpers
+
 
 # Microservice REST API for Dash price to whatever FIAT currency, and BTC.
 #
 # Input: FX Pair
 # Output: Returns exchange rate
 #
-# Future: Stick this into a DB/Redis, pull rate every X seconds. Then write out
-# static files for each currency pair and serve up JSON files directly via
-# nginx. This should scale like crazy.
-
-# TODO: separate exchange rate logic & sinatra service
-# TODO: ensure BigDecimal used throughout here, from input on...
-#       output should use: d.round(8).to_s('8F')
-
 
 def make_payload(h)
   payload = {}
@@ -45,51 +42,20 @@ def get_rates(fxpair)
   fxpair = base + '_' + quote
 
   # check validity of base/quote
-  if (not is_valid_ticker_string(base))
+  if (not is_valid_ticker_string($redis, base))
     return make_payload(err: "#{base} is not a valid currency ticker string")
   end
-  if (not is_valid_ticker_string(quote))
+  if (not is_valid_ticker_string($redis, quote))
     return make_payload(err: "#{quote} is not a valid currency ticker string")
   end
 
-
-  # do the thing
-  if (base === quote)
-    payload = make_payload(pair: fxpair, rate: BigDecimal.new(1))
-
-  elsif (is_fiat(base))
-    payload = make_payload(err: 'Fiat base pairs are not supported.')
-
-  elsif (poloniex_has_pair(fxpair))
-    payload = make_payload(pair: fxpair, rate: poloniex_pair(fxpair))
-
-  elsif (is_crypto(quote) && is_crypto(base))
-    # in this case, both are alt crypto.
-    # get BTC_<alt> rate for each & divide...
-    base_rate  = poloniex_pair(base + '_BTC').to_d
-    quote_rate = poloniex_pair(quote + '_BTC').to_d
-    rate = base_rate * (1.0 / quote_rate)
-    payload = make_payload(pair: fxpair, rate: rate)
-
-  elsif (is_fiat(quote))
-    if (base === 'BTC')
-      rate = btc_fiat_rate(quote)
-    else
-      rate = poloniex_pair(base + '_BTC') * btc_fiat_rate(quote)
-    end
-    payload = make_payload(pair: fxpair, rate: rate)
-
-  else
-    payload = make_payload(err: "FX Pair [#{fxpair}] unsupported.")
-  end
-
-  return payload
+  rate = get_rate($redis, base, quote)
+  return make_payload(pair: fxpair, rate: rate)
 end
 
 
 class RateService < Sinatra::Base
   set :port, 4568
-  redis = Redis.new
 
   before do
     content_type :json

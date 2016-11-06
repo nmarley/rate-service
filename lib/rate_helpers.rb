@@ -71,7 +71,7 @@ module RateHelpers
     return TICKER_CHANGES.has_key?(ticker) ? TICKER_CHANGES[ticker] : ticker
   end
 
-  def is_valid_ticker_string(ticker_string)
-    return is_fiat(ticker_string) || is_crypto(ticker_string)
+  def is_valid_ticker_string(redis, ticker_string)
+    return is_fiat(redis, ticker_string) || is_crypto(redis, ticker_string)
   end
 end
