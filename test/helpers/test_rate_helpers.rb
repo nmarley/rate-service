@@ -73,5 +73,16 @@ class TestRateHelpers < Minitest::Test
     assert_equal '562.76527799', btc_fiat(@redis, 'GBP').ep
   end
 
+  def test_usd_crypto
+    assert_equal '0.001419481676', usd_crypto(@redis, 'BTC').ep(12)
+    assert_equal '0.19880696', usd_crypto(@redis, 'XMR').ep
+    assert_equal '0.10721015', usd_crypto(@redis, 'DASH').ep
+    assert_equal '0.09061422', usd_crypto(@redis, 'ETH').ep
+    assert_equal '0.25746265', usd_crypto(@redis, 'LTC').ep
+    assert_equal '12.75250809', usd_crypto(@redis, 'MAID').ep
+    assert_equal '4435.8802375', usd_crypto(@redis, 'DOGE').ep
+    assert_equal '0.48317188', usd_crypto(@redis, 'FCT').ep
+  end
+
 
 end
