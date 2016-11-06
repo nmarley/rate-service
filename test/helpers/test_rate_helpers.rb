@@ -1,6 +1,13 @@
 require File.expand_path('../../test_helper', __FILE__)
 require 'rate_helpers'
 
+class ::BigDecimal
+  # "easy print"
+  def ep(num=8)
+    round(num).to_s("#{num}F")
+  end
+end
+
 class TestRateHelpers < Minitest::Test
   include RateHelpers
   attr_reader :fiat_tickers, :crypto_tickers
