@@ -47,6 +47,8 @@ module RateHelpers
   end
 
   def get_rate(redis, base, quote)
+    return BigDecimal.new('1')  if (base === quote)
+
     if (is_crypto(redis, base))
       base_rate = 1 / (btc_crypto(redis, base))
       quote_rate = is_crypto(redis, quote) ? btc_crypto(redis, quote) : btc_fiat(redis, quote)
