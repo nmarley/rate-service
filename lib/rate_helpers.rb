@@ -46,6 +46,19 @@ module RateHelpers
     return BigDecimal.new(redis.get(key))
   end
 
+  def get_rate(redis, base, quote)
+    if (is_crypto(redis, base))
+      base_rate = 1 / (btc_crypto(redis, base))
+      quote_rate = is_crypto(redis, quote) ? btc_crypto(redis, quote) : btc_fiat(redis, quote)
+    elsif (is_fiat(redis, base))
+      base_rate = 1 / (usd_fiat(redis, base))
+      quote_rate = is_fiat(redis, quote) ? usd_fiat(redis, quote) : usd_crypto(redis, quote)
+    end
+
+    return base_rate * quote_rate
+  end
+
+
   TICKER_CHANGES = {
     'XBT' => 'BTC',
     'DRK' => 'DASH',

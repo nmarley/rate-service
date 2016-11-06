@@ -106,4 +106,48 @@ class TestRateHelpers < Minitest::Test
     assert_equal '63.836130101', btc_crypto(@redis, 'ETH').ep(12)
   end
 
+  def test_get_rate
+    assert_equal '704.482500132', get_rate(@redis, 'BTC', 'USD').ep(12)
+    assert_equal '0.001419481676', get_rate(@redis, 'USD', 'BTC').ep(12)
+
+    assert_equal '1.854366946781', get_rate(@redis, 'DASH', 'XMR').ep(12)
+    assert_equal '0.539267593038', get_rate(@redis, 'XMR', 'DASH').ep(12)
+
+    assert_equal '2.401476416338', get_rate(@redis, 'DASH', 'LTC').ep(12)
+    assert_equal '0.416410501972', get_rate(@redis, 'LTC', 'DASH').ep(12)
+
+    assert_equal '8.369077041197', get_rate(@redis, 'DASH', 'EUR').ep(12)
+    assert_equal '0.119487488846', get_rate(@redis, 'EUR', 'DASH').ep(12)
+
+    assert_equal '12.15382132369', get_rate(@redis, 'DASH', 'AUD').ep(12)
+    assert_equal '0.082278649107', get_rate(@redis, 'AUD', 'DASH').ep(12)
+
+    assert_equal '9.327475108606', get_rate(@redis, 'DASH', 'USD').ep(12)
+    assert_equal '0.107210149409', get_rate(@redis, 'USD', 'DASH').ep(12)
+
+    assert_equal '0.01324018', get_rate(@redis, 'DASH', 'BTC').ep(12)
+    assert_equal '75.527674095', get_rate(@redis, 'BTC', 'DASH').ep(12)
+
+    assert_equal '3.484971571763', get_rate(@redis, 'LTC', 'EUR').ep(12)
+    assert_equal '0.286946386511', get_rate(@redis, 'EUR', 'LTC').ep(12)
+
+    assert_equal '0.00105909259', get_rate(@redis, 'CAD', 'BTC').ep(12)
+    assert_equal '944.204509759417', get_rate(@redis, 'BTC', 'CAD').ep(12)
+
+    assert_equal '0.746112195875', get_rate(@redis, 'CAD', 'USD').ep(12)
+    assert_equal '1.340281', get_rate(@redis, 'USD', 'CAD').ep(12)
+
+    assert_equal '0.972193890684', get_rate(@redis, 'CAD', 'AUD').ep(12)
+    assert_equal '1.028601403056', get_rate(@redis, 'AUD', 'CAD').ep(12)
+
+    assert_equal '0.596020535992', get_rate(@redis, 'CAD', 'GBP').ep(12)
+    assert_equal '1.677794538034', get_rate(@redis, 'GBP', 'CAD').ep(12)
+
+    assert_equal '1.6311415997', get_rate(@redis, 'GBP', 'AUD').ep(12)
+    assert_equal '0.613067559572', get_rate(@redis, 'AUD', 'GBP').ep(12)
+
+    assert_equal '0.954946470764', get_rate(@redis, 'NZD', 'AUD').ep(12)
+    assert_equal '1.047179114867', get_rate(@redis, 'AUD', 'NZD').ep(12)
+  end
+
 end
