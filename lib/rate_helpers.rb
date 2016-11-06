@@ -29,11 +29,21 @@ module RateHelpers
     return (btc_usd * usd_fiat)
   end
 
+  def btc_crypto(redis, crypto)
+    key = "BTC_#{crypto}"
+    return BigDecimal.new(redis.get(key))
+  end
+
   def usd_crypto(redis, crypto)
     key = "BTC_#{crypto}"
     btc_crypto = BigDecimal.new(redis.get(key))
     usd_btc = BigDecimal.new(redis.get('USD_BTC'))
     return (usd_btc * btc_crypto)
+  end
+
+  def usd_fiat(redis, fiat)
+    key = "USD_#{fiat}"
+    return BigDecimal.new(redis.get(key))
   end
 
   TICKER_CHANGES = {
