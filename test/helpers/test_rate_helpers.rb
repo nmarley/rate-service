@@ -5,9 +5,31 @@ class TestRateHelpers < Minitest::Test
   include RateHelpers
   attr_reader :fiat_tickers, :crypto_tickers
 
+  private def load_fixtures
+    fixture_dir = '../fixture-data'
+    klasses = [
+      {
+        klass: BitcoinAverageAPI,
+         file: 'ba2_global_all.json'
+      },
+      {
+        klass: PoloniexAPI,
+         file: 'polo.json'
+      },
+    ]
+    klasses.each do |h|
+      klass = h[:klass]
+      fn = h[:file]
+      absfile = File.expand_path(File.join(fixture_dir, fn), __dir__)
+      inst = klass.new($redis)
+      inst.load(inst.post_process(File.read(absfile)))
+    end
+  end
+
+
   def setup
-    $redis = Redis.new
-    # $redis.flushall  # once using redis-namespace...
+    $redis.flushall
+    load_fixtures
 
     @fiat_tickers = %w[ CNY USD CAD ZAR HKD ]
     @crypto_tickers = %w[ BTC LTC DASH XMR MAID ETH ]

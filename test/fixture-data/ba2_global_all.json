@@ -1,0 +1,693 @@
+{
+   "rates" : {
+      "BBD" : {
+         "name" : "Barbadian Dollar",
+         "rate" : "2"
+      },
+      "SLL" : {
+         "name" : "Sierra Leonean Leone",
+         "rate" : "5612"
+      },
+      "SYP" : {
+         "rate" : "213.825",
+         "name" : "Syrian Pound"
+      },
+      "VND" : {
+         "rate" : "22327.983333",
+         "name" : "Vietnamese Dong"
+      },
+      "JEP" : {
+         "name" : "Jersey Pound",
+         "rate" : "0.798835"
+      },
+      "XOF" : {
+         "rate" : "594.72396",
+         "name" : "CFA Franc BCEAO"
+      },
+      "BMD" : {
+         "rate" : "1",
+         "name" : "Bermudan Dollar"
+      },
+      "CLP" : {
+         "rate" : "654.968095",
+         "name" : "Chilean Peso"
+      },
+      "PGK" : {
+         "rate" : "3.167125",
+         "name" : "Papua New Guinean Kina"
+      },
+      "INR" : {
+         "name" : "Indian Rupee",
+         "rate" : "66.75023"
+      },
+      "ZMW" : {
+         "name" : "Zambian Kwacha",
+         "rate" : "9.807401"
+      },
+      "GMD" : {
+         "name" : "Gambian Dalasi",
+         "rate" : "42.58851"
+      },
+      "KRW" : {
+         "name" : "South Korean Won",
+         "rate" : "1142.714984"
+      },
+      "MMK" : {
+         "rate" : "1279",
+         "name" : "Myanma Kyat"
+      },
+      "XAF" : {
+         "name" : "CFA Franc BEAC",
+         "rate" : "589.766335"
+      },
+      "DJF" : {
+         "rate" : "177.977627",
+         "name" : "Djiboutian Franc"
+      },
+      "KHR" : {
+         "rate" : "4039.125",
+         "name" : "Cambodian Riel"
+      },
+      "CZK" : {
+         "rate" : "24.26784",
+         "name" : "Czech Republic Koruna"
+      },
+      "AOA" : {
+         "name" : "Angolan Kwanza",
+         "rate" : "165.529166"
+      },
+      "ZAR" : {
+         "rate" : "13.57364",
+         "name" : "South African Rand"
+      },
+      "RON" : {
+         "rate" : "4.039041",
+         "name" : "Romanian Leu"
+      },
+      "TZS" : {
+         "name" : "Tanzanian Shilling",
+         "rate" : "2178.621667"
+      },
+      "CVE" : {
+         "rate" : "99.303949",
+         "name" : "Cape Verdean Escudo"
+      },
+      "CUC" : {
+         "rate" : "1",
+         "name" : "Cuban Convertible Peso"
+      },
+      "MKD" : {
+         "name" : "Macedonian Denar",
+         "rate" : "55.29226"
+      },
+      "EUR" : {
+         "name" : "Euro",
+         "rate" : "0.89725"
+      },
+      "BYR" : {
+         "name" : "Belarusian Ruble (pre-2016)",
+         "rate" : "20026.25"
+      },
+      "SCR" : {
+         "rate" : "13.34375",
+         "name" : "Seychellois Rupee"
+      },
+      "SVC" : {
+         "name" : "Salvadoran Colón",
+         "rate" : "8.738284"
+      },
+      "EGP" : {
+         "name" : "Egyptian Pound",
+         "rate" : "15.47868"
+      },
+      "SGD" : {
+         "name" : "Singapore Dollar",
+         "rate" : "1.383296"
+      },
+      "DOP" : {
+         "name" : "Dominican Peso",
+         "rate" : "46.28707"
+      },
+      "TND" : {
+         "rate" : "2.226329",
+         "name" : "Tunisian Dinar"
+      },
+      "LKR" : {
+         "rate" : "148.038901",
+         "name" : "Sri Lankan Rupee"
+      },
+      "ARS" : {
+         "name" : "Argentine Peso",
+         "rate" : "15.06972"
+      },
+      "YER" : {
+         "name" : "Yemeni Rial",
+         "rate" : "249.777999"
+      },
+      "AZN" : {
+         "name" : "Azerbaijani Manat",
+         "rate" : "1.6754"
+      },
+      "MYR" : {
+         "name" : "Malaysian Ringgit",
+         "rate" : "4.203069"
+      },
+      "OMR" : {
+         "rate" : "0.384963",
+         "name" : "Omani Rial"
+      },
+      "CHF" : {
+         "rate" : "0.968943",
+         "name" : "Swiss Franc"
+      },
+      "PEN" : {
+         "rate" : "3.383845",
+         "name" : "Peruvian Nuevo Sol"
+      },
+      "AMD" : {
+         "rate" : "476.507497",
+         "name" : "Armenian Dram"
+      },
+      "MVR" : {
+         "name" : "Maldivian Rufiyaa",
+         "rate" : "15.266667"
+      },
+      "RWF" : {
+         "rate" : "798.115001",
+         "name" : "Rwandan Franc"
+      },
+      "KPW" : {
+         "name" : "North Korean Won",
+         "rate" : "900.09"
+      },
+      "NGN" : {
+         "rate" : "313.7848",
+         "name" : "Nigerian Naira"
+      },
+      "SDG" : {
+         "rate" : "6.359885",
+         "name" : "Sudanese Pound"
+      },
+      "IRR" : {
+         "rate" : "30080.0077",
+         "name" : "Iranian Rial"
+      },
+      "RUB" : {
+         "rate" : "64.152999",
+         "name" : "Russian Ruble"
+      },
+      "ILS" : {
+         "name" : "Israeli New Sheqel",
+         "rate" : "3.792488"
+      },
+      "HUF" : {
+         "rate" : "275.1678",
+         "name" : "Hungarian Forint"
+      },
+      "UZS" : {
+         "name" : "Uzbekistan Som",
+         "rate" : "3107.5"
+      },
+      "XPT" : {
+         "rate" : "0.000882",
+         "name" : "Platinum Ounce"
+      },
+      "SRD" : {
+         "rate" : "7.1315",
+         "name" : "Surinamese Dollar"
+      },
+      "PAB" : {
+         "name" : "Panamanian Balboa",
+         "rate" : "1"
+      },
+      "AED" : {
+         "rate" : "3.672868",
+         "name" : "United Arab Emirates Dirham"
+      },
+      "JOD" : {
+         "rate" : "0.707996",
+         "name" : "Jordanian Dinar"
+      },
+      "JMD" : {
+         "rate" : "129.111799",
+         "name" : "Jamaican Dollar"
+      },
+      "BTC" : {
+         "name" : "Bitcoin",
+         "rate" : "0.001419481676"
+      },
+      "PLN" : {
+         "name" : "Polish Zloty",
+         "rate" : "3.885891"
+      },
+      "TOP" : {
+         "rate" : "2.203028",
+         "name" : "Tongan Pa?anga"
+      },
+      "ERN" : {
+         "name" : "Eritrean Nakfa",
+         "rate" : "15.335"
+      },
+      "TRY" : {
+         "name" : "Turkish Lira",
+         "rate" : "3.153826"
+      },
+      "CAD" : {
+         "rate" : "1.340281",
+         "name" : "Canadian Dollar"
+      },
+      "PKR" : {
+         "name" : "Pakistani Rupee",
+         "rate" : "104.672799"
+      },
+      "RSD" : {
+         "name" : "Serbian Dinar",
+         "rate" : "110.511899"
+      },
+      "PYG" : {
+         "name" : "Paraguayan Guarani",
+         "rate" : "5717.151667"
+      },
+      "PHP" : {
+         "name" : "Philippine Peso",
+         "rate" : "48.50367"
+      },
+      "XAG" : {
+         "rate" : "0.0541121",
+         "name" : "Silver Ounce"
+      },
+      "LBP" : {
+         "name" : "Lebanese Pound",
+         "rate" : "1509.176675"
+      },
+      "BOB" : {
+         "name" : "Bolivian Boliviano",
+         "rate" : "6.908537"
+      },
+      "NAD" : {
+         "name" : "Namibian Dollar",
+         "rate" : "13.55779"
+      },
+      "LAK" : {
+         "name" : "Laotian Kip",
+         "rate" : "8127.125"
+      },
+      "COP" : {
+         "name" : "Colombian Peso",
+         "rate" : "3061.738333"
+      },
+      "TTD" : {
+         "rate" : "6.696658",
+         "name" : "Trinidad and Tobago Dollar"
+      },
+      "KYD" : {
+         "name" : "Cayman Islands Dollar",
+         "rate" : "0.823967"
+      },
+      "CUP" : {
+         "name" : "Cuban Peso",
+         "rate" : "24.728383"
+      },
+      "GYD" : {
+         "rate" : "205.475331",
+         "name" : "Guyanaese Dollar"
+      },
+      "XDR" : {
+         "name" : "Special Drawing Rights",
+         "rate" : "0.721892"
+      },
+      "MXN" : {
+         "name" : "Mexican Peso",
+         "rate" : "19.0418"
+      },
+      "LYD" : {
+         "rate" : "1.398968",
+         "name" : "Libyan Dinar"
+      },
+      "CLF" : {
+         "rate" : "0.024728",
+         "name" : "Chilean Unit of Account (UF)"
+      },
+      "GEL" : {
+         "name" : "Georgian Lari",
+         "rate" : "2.41206"
+      },
+      "MTL" : {
+         "rate" : "0.683738",
+         "name" : "Maltese Lira"
+      },
+      "GTQ" : {
+         "name" : "Guatemalan Quetzal",
+         "rate" : "7.498052"
+      },
+      "EEK" : {
+         "rate" : "14.0681",
+         "name" : "Estonian Kroon"
+      },
+      "ISK" : {
+         "name" : "Icelandic Króna",
+         "rate" : "110.5858"
+      },
+      "ANG" : {
+         "name" : "Netherlands Antillean Guilder",
+         "rate" : "1.7755"
+      },
+      "JPY" : {
+         "rate" : "103.093599",
+         "name" : "Japanese Yen"
+      },
+      "FJD" : {
+         "name" : "Fijian Dollar",
+         "rate" : "2.035117"
+      },
+      "AFN" : {
+         "name" : "Afghan Afghani",
+         "rate" : "65.8581"
+      },
+      "UYU" : {
+         "name" : "Uruguayan Peso",
+         "rate" : "28.17934"
+      },
+      "BYN" : {
+         "rate" : "1.90195",
+         "name" : "Belarusian Ruble"
+      },
+      "IQD" : {
+         "name" : "Iraqi Dinar",
+         "rate" : "1160.116"
+      },
+      "XPF" : {
+         "rate" : "107.286001",
+         "name" : "CFP Franc"
+      },
+      "MZN" : {
+         "rate" : "76.590001",
+         "name" : "Mozambican Metical"
+      },
+      "MRO" : {
+         "rate" : "357.1815",
+         "name" : "Mauritanian Ouguiya"
+      },
+      "THB" : {
+         "name" : "Thai Baht",
+         "rate" : "34.96387"
+      },
+      "NOK" : {
+         "rate" : "8.166144",
+         "name" : "Norwegian Krone"
+      },
+      "SBD" : {
+         "name" : "Solomon Islands Dollar",
+         "rate" : "7.870713"
+      },
+      "GIP" : {
+         "rate" : "0.798835",
+         "name" : "Gibraltar Pound"
+      },
+      "HNL" : {
+         "name" : "Honduran Lempira",
+         "rate" : "22.94713"
+      },
+      "KMF" : {
+         "rate" : "442.833337",
+         "name" : "Comorian Franc"
+      },
+      "LTL" : {
+         "rate" : "3.076351",
+         "name" : "Lithuanian Litas"
+      },
+      "BDT" : {
+         "rate" : "78.42639",
+         "name" : "Bangladeshi Taka"
+      },
+      "KGS" : {
+         "rate" : "68.73625",
+         "name" : "Kyrgystani Som"
+      },
+      "MDL" : {
+         "name" : "Moldovan Leu",
+         "rate" : "19.84444"
+      },
+      "SZL" : {
+         "rate" : "13.55433",
+         "name" : "Swazi Lilangeni"
+      },
+      "AWG" : {
+         "name" : "Aruban Florin",
+         "rate" : "1.793333"
+      },
+      "MAD" : {
+         "name" : "Moroccan Dirham",
+         "rate" : "9.78757"
+      },
+      "LVL" : {
+         "rate" : "0.628115",
+         "name" : "Latvian Lats"
+      },
+      "SAR" : {
+         "name" : "Saudi Riyal",
+         "rate" : "3.750595"
+      },
+      "XCD" : {
+         "name" : "East Caribbean Dollar",
+         "rate" : "2.69902"
+      },
+      "AUD" : {
+         "name" : "Australian Dollar",
+         "rate" : "1.303013"
+      },
+      "WST" : {
+         "name" : "Samoan Tala",
+         "rate" : "2.5152"
+      },
+      "BWP" : {
+         "rate" : "10.4565",
+         "name" : "Botswanan Pula"
+      },
+      "FKP" : {
+         "rate" : "0.798835",
+         "name" : "Falkland Islands Pound"
+      },
+      "UGX" : {
+         "rate" : "3495.685",
+         "name" : "Ugandan Shilling"
+      },
+      "KZT" : {
+         "rate" : "338.7906",
+         "name" : "Kazakhstani Tenge"
+      },
+      "BHD" : {
+         "name" : "Bahraini Dinar",
+         "rate" : "0.376913"
+      },
+      "HRK" : {
+         "rate" : "6.741705",
+         "name" : "Croatian Kuna"
+      },
+      "QAR" : {
+         "rate" : "3.640767",
+         "name" : "Qatari Rial"
+      },
+      "GGP" : {
+         "rate" : "0.798835",
+         "name" : "Guernsey Pound"
+      },
+      "SHP" : {
+         "name" : "Saint Helena Pound",
+         "rate" : "0.798835"
+      },
+      "MNT" : {
+         "name" : "Mongolian Tugrik",
+         "rate" : "2399.803333"
+      },
+      "BZD" : {
+         "rate" : "1.997705",
+         "name" : "Belize Dollar"
+      },
+      "GHS" : {
+         "rate" : "3.97272",
+         "name" : "Ghanaian Cedi"
+      },
+      "MOP" : {
+         "name" : "Macanese Pataca",
+         "rate" : "7.982362"
+      },
+      "GBP" : {
+         "rate" : "0.798835",
+         "name" : "British Pound Sterling"
+      },
+      "NIO" : {
+         "rate" : "29.00429",
+         "name" : "Nicaraguan Córdoba"
+      },
+      "VEF" : {
+         "rate" : "9.977146",
+         "name" : "Venezuelan Bolívar Fuerte"
+      },
+      "SOS" : {
+         "name" : "Somali Shilling",
+         "rate" : "572.540125"
+      },
+      "HKD" : {
+         "name" : "Hong Kong Dollar",
+         "rate" : "7.755546"
+      },
+      "SEK" : {
+         "name" : "Swedish Krona",
+         "rate" : "8.949166"
+      },
+      "CDF" : {
+         "name" : "Congolese Franc",
+         "rate" : "944.0944"
+      },
+      "ALL" : {
+         "rate" : "122.9443",
+         "name" : "Albanian Lek"
+      },
+      "KWD" : {
+         "name" : "Kuwaiti Dinar",
+         "rate" : "0.302318"
+      },
+      "MUR" : {
+         "rate" : "35.7766",
+         "name" : "Mauritian Rupee"
+      },
+      "STD" : {
+         "name" : "São Tomé and Príncipe Dobra",
+         "rate" : "22058.45"
+      },
+      "DZD" : {
+         "rate" : "109.76664",
+         "name" : "Algerian Dinar"
+      },
+      "LRD" : {
+         "name" : "Liberian Dollar",
+         "rate" : "91.25"
+      },
+      "BSD" : {
+         "name" : "Bahamian Dollar",
+         "rate" : "1"
+      },
+      "BIF" : {
+         "rate" : "1667.847495",
+         "name" : "Burundian Franc"
+      },
+      "LSL" : {
+         "rate" : "13.56579",
+         "name" : "Lesotho Loti"
+      },
+      "VUV" : {
+         "name" : "Vanuatu Vatu",
+         "rate" : "105.890001"
+      },
+      "GNF" : {
+         "rate" : "9159.8675",
+         "name" : "Guinean Franc"
+      },
+      "TWD" : {
+         "rate" : "31.44992",
+         "name" : "New Taiwan Dollar"
+      },
+      "ZMK" : {
+         "rate" : "5253.075255",
+         "name" : "Zambian Kwacha (pre-2013)"
+      },
+      "IDR" : {
+         "rate" : "13076.7",
+         "name" : "Indonesian Rupiah"
+      },
+      "USD" : {
+         "rate" : "1",
+         "name" : "United States Dollar"
+      },
+      "NZD" : {
+         "name" : "New Zealand Dollar",
+         "rate" : "1.364488"
+      },
+      "UAH" : {
+         "rate" : "25.56159",
+         "name" : "Ukrainian Hryvnia"
+      },
+      "DKK" : {
+         "name" : "Danish Krone",
+         "rate" : "6.683876"
+      },
+      "IMP" : {
+         "rate" : "0.798835",
+         "name" : "Manx pound"
+      },
+      "BAM" : {
+         "rate" : "1.756799",
+         "name" : "Bosnia-Herzegovina Convertible Mark"
+      },
+      "BND" : {
+         "name" : "Brunei Dollar",
+         "rate" : "1.371669"
+      },
+      "HTG" : {
+         "rate" : "64.571525",
+         "name" : "Haitian Gourde"
+      },
+      "CNY" : {
+         "rate" : "6.755386",
+         "name" : "Chinese Yuan"
+      },
+      "BRL" : {
+         "name" : "Brazilian Real",
+         "rate" : "3.237292"
+      },
+      "TJS" : {
+         "rate" : "7.87555",
+         "name" : "Tajikistani Somoni"
+      },
+      "KES" : {
+         "rate" : "101.66524",
+         "name" : "Kenyan Shilling"
+      },
+      "NPR" : {
+         "name" : "Nepalese Rupee",
+         "rate" : "106.63838"
+      },
+      "MGA" : {
+         "name" : "Malagasy Ariary",
+         "rate" : "3175.936667"
+      },
+      "MWK" : {
+         "rate" : "717.582505",
+         "name" : "Malawian Kwacha"
+      },
+      "TMT" : {
+         "name" : "Turkmenistani Manat",
+         "rate" : "3.464733"
+      },
+      "XPD" : {
+         "rate" : "0.001488",
+         "name" : "Palladium Ounce"
+      },
+      "ZWL" : {
+         "rate" : "322.322775",
+         "name" : "Zimbabwean Dollar"
+      },
+      "BTN" : {
+         "rate" : "66.723499",
+         "name" : "Bhutanese Ngultrum"
+      },
+      "CRC" : {
+         "name" : "Costa Rican Colón",
+         "rate" : "551.631696"
+      },
+      "XAU" : {
+         "rate" : "0.00076427",
+         "name" : "Gold Ounce"
+      },
+      "ETB" : {
+         "rate" : "22.31164",
+         "name" : "Ethiopian Birr"
+      },
+      "BGN" : {
+         "rate" : "1.758395",
+         "name" : "Bulgarian Lev"
+      }
+   },
+   "time" : "05-11-2016 22:11:03"
+}
