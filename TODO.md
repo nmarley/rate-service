@@ -1,5 +1,7 @@
 # TODO
 
+* make a class which re-uses a single Redis(::Namespace) connection and implement all "helper" methods (e.g. `is_fiat`, `usd_crypto`, etc) as methods on that class
+
 * test which loads a fixture data & then test all x-change logic:
 
   -- crypto/crypto
