@@ -7,19 +7,33 @@ require 'awesome_print'
 require 'redis'
 
 module RateHelpers
-  def is_fiat(ticker)
+  def is_fiat(redis, ticker)
     ticker = ticker.upcase.strip
-    return false  if ticker === 'BTC' 
+    return false  if ticker === 'BTC'
 
     # this is the fix for O(1) lookup speed
     nk = "USD_#{ticker.upcase.strip}"
-    return !($redis.get(nk).nil?)
+    return !(redis.get(nk).nil?)
   end
 
-  def is_crypto(ticker)
+  def is_crypto(redis, ticker)
     ticker = ticker.upcase.strip
     nk = "BTC_#{ticker}"
-    return !($redis.get(nk).nil?)  # || (ticker === 'BTC')
+    return !(redis.get(nk).nil?)  # || (ticker === 'BTC')
+  end
+
+  def btc_fiat(redis, fiat)
+    key = "USD_#{fiat}"
+    usd_fiat = BigDecimal.new(redis.get(key))
+    btc_usd = 1 / BigDecimal.new(redis.get('USD_BTC'))
+    return (btc_usd * usd_fiat)
+  end
+
+  def usd_crypto(redis, crypto)
+    key = "BTC_#{crypto}"
+    btc_crypto = BigDecimal.new(redis.get(key))
+    usd_btc = BigDecimal.new(redis.get('USD_BTC'))
+    return (usd_btc * btc_crypto)
   end
 
   TICKER_CHANGES = {
