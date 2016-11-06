@@ -62,6 +62,16 @@ class TestRateHelpers < Minitest::Test
       assert !is_crypto(@redis, ticker)
     end
   end
+
+  def test_btc_fiat
+    assert_equal '704.48250013', btc_fiat(@redis, 'USD').ep
+    assert_equal '632.09692324', btc_fiat(@redis, 'EUR').ep
+    assert_equal '917.94985594', btc_fiat(@redis, 'AUD').ep
+    assert_equal '5463.64643597', btc_fiat(@redis, 'HKD').ep
+    assert_equal '944.20450976', btc_fiat(@redis, 'CAD').ep
+    assert_equal '974.5078245', btc_fiat(@redis, 'SGD').ep
+    assert_equal '562.76527799', btc_fiat(@redis, 'GBP').ep
+  end
+
+
 end
-
-
