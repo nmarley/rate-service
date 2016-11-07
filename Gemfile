@@ -9,6 +9,7 @@ gem 'redis-namespace', '~> 1.5.2'
 gem 'faraday', '~> 0.9.2'
 gem 'sidekiq', '~> 4.2.4'
 gem 'clockwork', '~> 2.0.0'
+gem 'daemons', '~> 1.2.4'
 # gem 'stoplight', '~> 2.1.0'
 
 # deployment
