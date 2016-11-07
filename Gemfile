@@ -15,6 +15,7 @@ gem 'clockwork', '~> 2.0.0'
 gem 'capistrano', '~> 3.6.1'
 gem 'capistrano-bundler', '~> 1.2.0'
 gem 'capistrano3-puma', '~> 1.2.1'
+gem 'capistrano-sidekiq', '~> 0.5.4'
 
 # debugging
 gem 'awesome_print'
