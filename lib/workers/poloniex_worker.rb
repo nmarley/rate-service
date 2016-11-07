@@ -1,11 +1,11 @@
 require 'sidekiq'
 require 'rate_source'
+require File.expand_path('../../config/init', __dir__)
 
 class PoloniexWorker
   include Sidekiq::Worker
 
   def perform
-    redis = Redis.new
-    PoloniexAPI.new(redis).fetch_and_load
+    PoloniexAPI.new($redis).fetch_and_load
   end
 end
