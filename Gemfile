@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.1'
 
 # core gems
 gem 'sinatra', '~> 1.4.7', require: false
