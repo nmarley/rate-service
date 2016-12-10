@@ -57,8 +57,6 @@ end
 
 
 class RateService < Sinatra::Base
-  set :port, 4568
-
   before do
     content_type :json
   end
