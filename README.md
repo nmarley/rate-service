@@ -16,6 +16,8 @@ Clone this repo and install gems:
     git clone https://github.com/nmarley/rate-service.git && cd rate-service
     bundle install --binstubs --path vendor
 
+Also install & run Redis on the standard port.
+
 Run this cron command to fetch rates every minute:
 
     # m h  dom mon dow   command
@@ -23,7 +25,7 @@ Run this cron command to fetch rates every minute:
 
 Run the sinatra app using whatever deployment method:
 
-    bundle exec puma -C puma.rb config.ru &
+    bundle exec puma -C config/puma.rb config.ru &
 
 You can put this behind an nginx reverse proxy:
 
@@ -42,10 +44,4 @@ You can put this behind an nginx reverse proxy:
             proxy_pass http://rate;
           }
       }
-
-### TODO
-
-Can use Redis for caching rate info and make the cache time configurable.
-
-Currently a bit "hacky", as it uses cron to fetch data from two JSON APIs and just sticks the files on disk. The Sinatra service loads the JSON files with every request.
 
