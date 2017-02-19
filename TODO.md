@@ -11,6 +11,16 @@
   "regular" values not found, fetch the "stale" namespace values. If still not
   found, they don't exist.)
 
+### DEPLOYMENT VIA DOCKER
+
+Finish docker-compose networking bits, ensure that app container can access redis container via 'redis' name, then set an ENV var 'REDIS_URL' in docker-compose file:
+
+    REDIS_URL="redis://redis:6379/0"
+
+# REDIS_URL="redis://172.17.0.2:6379/0"
+# REDIS_URL="redis://172.17.0.2:6379/0" bundle exec puma -C config/puma.rb config.ru
+
+
 # ==============================================================================
 
 * proper Sinatra service tests via Rack::Test <http://www.sinatrarb.com/testing.html>, <http://www.sinatrarb.com/configuration.html>
@@ -26,4 +36,3 @@
 * conform to <http://jsonapi.org/> spec as much as possible
 
 * remove dependency on BitcoinAverage (new API is closed-source & proprietary, funny timestamps)
-
