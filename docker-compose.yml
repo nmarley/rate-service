@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+    - "4568:4568"
+    links:
+    - redis
+  redis:
+    image: redis:alpine
