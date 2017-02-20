@@ -22,4 +22,4 @@ services:
     volumes:
     - ./config/nginx.conf.template:/etc/nginx/conf.d/nginx.conf.template
     - /data/ssl:/ssl
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx"
+    command: /bin/ash -c "envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx"
