@@ -23,4 +23,4 @@ services:
     - /var/log/nginx/:/logs/
     - ./config/nginx.conf.template:/etc/nginx/nginx.conf.template
     - /data/ssl:/ssl
-    command: /bin/ash -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx"
+    command: /bin/ash -c "envsubst '$$NGINX_HOST $$IPV6 $$NGINX_SSL_CERT $$NGINX_SSL_KEY $$NGINX_DHPARAM' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx"
