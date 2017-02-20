@@ -19,7 +19,7 @@ on Github.
 
 1. Clone the repo:
 
-    git clone https://github.com/nmarley/rate-service.git && cd rate-service
+    `git clone https://github.com/nmarley/rate-service.git && cd rate-service`
 
 2. Create the environment variables file `nginx-variables.env` with the appropriate values:
 
@@ -37,16 +37,16 @@ on Github.
 
 4. Start all containers:
 
-    docker-compose up
+    `docker-compose up`
 
 5. Ensure a scheduled cron (or other) job is calling this API endpoint every
    minute, in order to pull the latest exchange rate data:
 
-    http://<service>/service/ingest
+    `http://<service>/service/ingest`
 
 Example:
 
-  curl -I http://localhost/service/ingest;echo
+  `curl -I http://localhost/service/ingest;echo`
 
 The endpoint doesn't have to be called from the Docker host -- it can be reached from anywhere.
 
