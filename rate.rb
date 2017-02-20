@@ -12,7 +12,6 @@ require 'rate_helpers'
 # TODO: class with all this encapsulated
 include RateHelpers
 
-
 # Microservice REST API for Dash price to whatever FIAT currency, and BTC.
 #
 # Input: FX Pair

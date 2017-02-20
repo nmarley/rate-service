@@ -98,4 +98,3 @@ class BitcoinAverageAPI < RateSource
     return newhash
   end
 end
-
