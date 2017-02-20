@@ -2,8 +2,8 @@ version: '2'
 services:
   app:
     build: .
-    ports:
-    - "4568:4568"
+    #ports:
+    #- "4568:4568"
     links:
     - redis
     environment:
