@@ -19,3 +19,5 @@ services:
     - app
     env_file:
     - nginx-variables.env
+    volumes:
+    - /data/ssl:/ssl
