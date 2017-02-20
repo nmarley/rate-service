@@ -1,7 +1,6 @@
 # TODO
 
-* make the rake redis:populate task into an endpoint instead, then just hit the
-  endpoint via cron every minute
+* IPv6 support (b/c Dockerized now): <https://docs.docker.com/engine/userguide/networking/default_network/ipv6/>
 
 * implement "old" or "stale" namespace for use in loading new values
 
@@ -10,16 +9,6 @@
   first fetch cross pair, if not found, fetch the regular values and if
   "regular" values not found, fetch the "stale" namespace values. If still not
   found, they don't exist.)
-
-### DEPLOYMENT VIA DOCKER
-
-Finish docker-compose networking bits, ensure that app container can access redis container via 'redis' name, then set an ENV var 'REDIS_URL' in docker-compose file:
-
-    REDIS_URL="redis://redis:6379/0"
-
-# REDIS_URL="redis://172.17.0.2:6379/0"
-# REDIS_URL="redis://172.17.0.2:6379/0" bundle exec puma -C config/puma.rb config.ru
-
 
 # ==============================================================================
 
