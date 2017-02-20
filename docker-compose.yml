@@ -20,6 +20,6 @@ services:
     env_file:
     - nginx-variables.env
     volumes:
-    - ./config/nginx.conf.template:/etc/nginx/conf.d/nginx.conf.template
+    - ./config/nginx.conf.template:/etc/nginx/nginx.conf.template
     - /data/ssl:/ssl
-    command: /bin/ash -c "envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx"
+    command: /bin/ash -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx"
