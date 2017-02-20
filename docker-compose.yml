@@ -6,5 +6,7 @@ services:
     - "4568:4568"
     links:
     - redis
+    environment:
+    - REDIS_URL=redis://redis:6379/0
   redis:
     image: redis:alpine
