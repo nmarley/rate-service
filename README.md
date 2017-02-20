@@ -23,10 +23,12 @@ on Github.
 
 2. Create the environment variables file `nginx-variables.env` with the appropriate values:
 
+    ```
     NGINX_HOST=FQDN
     NGINX_SSL_CERT=/ssl/rates.cer
     NGINX_SSL_KEY=/ssl/rates.key
     NGINX_DHPARAM=/ssl/dh2048.pem
+    ```
 
 3. Add SSL certificate info to /data/ssl on the host machine (or alter the
    docker-compose.yml file accordingly). You can generate a DH params file by:
