@@ -43,10 +43,10 @@ http {
         server_name ${NGINX_HOST};
 
         listen 80;
-        listen [${IPV6}]:80;
+        # listen [${IPV6}]:80;
 
         listen 443 ssl http2;
-        listen [${IPV6}]:443 ssl http2;
+        # listen [${IPV6}]:443 ssl http2;
 
         ssl_certificate      ${NGINX_SSL_CERT};
         ssl_certificate_key  ${NGINX_SSL_KEY};
