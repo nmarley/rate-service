@@ -20,4 +20,6 @@ services:
     env_file:
     - nginx-variables.env
     volumes:
+    - ./config/nginx.conf.template:/etc/nginx/conf.d/nginx.conf.template
     - /data/ssl:/ssl
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx"
