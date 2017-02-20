@@ -1,3 +1,4 @@
+require_relative 'rate_service/version'
 require File.expand_path('../config/application', __dir__)
 require_relative 'rate_source'
 

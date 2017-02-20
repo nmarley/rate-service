@@ -1,2 +1,2 @@
 require './rate.rb'
-run RateService
+run RateService::App

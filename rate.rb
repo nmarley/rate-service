@@ -56,31 +56,33 @@ def get_rates(fxpair)
 end
 
 
-class RateService < Sinatra::Base
-  before do
-    content_type :json
-  end
-
-  # /rate/:fxpair(.ext)?
-  get '/rate/:fxpair.?:format?' do
-    return get_rates(params[:fxpair].strip.upcase)
-  end
-
-  get '/service/ingest.?:format?' do
-    begin
-      RateService.ingest
-      status 204
-    rescue StandardError => ex
-      status 500
-      body make_payload(err: ex.message)
+module RateService
+  class App < Sinatra::Base
+    before do
+      content_type :json
     end
-  end
 
-  get '/*' do
-    return make_payload(err: "Sorry, that path is not defined.")
-  end
+    # /rate/:fxpair(.ext)?
+    get '/rate/:fxpair.?:format?' do
+      return get_rates(params[:fxpair].strip.upcase)
+    end
 
-  # $0 is the executed file
-  # __FILE__ is the current file
-  run! if __FILE__ == $0
+    get '/service/ingest.?:format?' do
+      begin
+        RateService.ingest
+        status 204
+      rescue StandardError => ex
+        status 500
+        body make_payload(err: ex.message)
+      end
+    end
+
+    get '/*' do
+      return make_payload(err: "Sorry, that path is not defined.")
+    end
+
+    # $0 is the executed file
+    # __FILE__ is the current file
+    run! if __FILE__ == $0
+  end
 end
