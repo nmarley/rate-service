@@ -8,6 +8,7 @@ require 'awesome_print'
 require 'byebug'
 require File.expand_path('config/application', __dir__)
 require 'rate_helpers'
+require 'rate_service'
 
 # TODO: class with all this encapsulated
 include RateHelpers
@@ -63,6 +64,16 @@ class RateService < Sinatra::Base
   # /rate/:fxpair(.ext)?
   get '/rate/:fxpair.?:format?' do
     return get_rates(params[:fxpair].strip.upcase)
+  end
+
+  get '/service/ingest.?:format?' do
+    begin
+      RateService.ingest
+      status 204
+    rescue StandardError => ex
+      status 500
+      body make_payload(err: ex.message)
+    end
   end
 
   get '/*' do
