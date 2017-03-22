@@ -59,17 +59,17 @@ end
 
 module RateService
   class App < Sinatra::Base
-
     # enable CORS for this API
+    register Sinatra::CrossOrigin
     configure do
       enable :cross_origin
     end
-    register Sinatra::CrossOrigin
     options '*' do
       response.headers['Allow'] = 'HEAD,GET,PUT,POST,DELETE,OPTIONS'
       response.headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept'
       200
     end
+    set :cross_origin, true
 
     before do
       content_type :json

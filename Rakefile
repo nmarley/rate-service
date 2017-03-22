@@ -1,7 +1,7 @@
 require 'rake/testtask'
 # TODO: make a Rakefile that does this for tests:
 #
-# bundle exec ruby -I./lib -I./test -Ilib/workers ./test/helpers/test_rate_helpers.rb
+# bundle exec ruby -I./lib -I./test ./test/helpers/test_rate_helpers.rb
 
 import 'lib/tasks/load_api_data.rake'
 
