@@ -14,7 +14,7 @@ COPY . /rate-service
 
 RUN gem install bundler
 RUN bundle config --global silence_root_warning 1
-RUN bundle install --binstubs --path vendor
+RUN bundle install --path vendor
 
 EXPOSE 4568
 
