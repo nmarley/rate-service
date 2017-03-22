@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/json'
+require 'sinatra/cross_origin'
 require 'json'
 require 'bigdecimal'
 require 'bigdecimal/util'
