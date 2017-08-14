@@ -1,6 +1,4 @@
 FROM alpine:3.5
-MAINTAINER BlackCarrot <dev@blackcarrot.be>
-LABEL description="Cryptocurrency Exchange Rate Service"
 
 RUN /bin/echo 'set -o vi' >> /etc/profile
 RUN /bin/echo 'gem: --no-document' > /etc/gemrc
@@ -20,3 +18,6 @@ EXPOSE 4568
 
 # /usr/bin/bundle exec puma -C config/puma.rb config.ru
 CMD ["/usr/bin/bundle", "exec", "puma", "-C", "config/puma.rb", "config.ru"]
+
+MAINTAINER BlackCarrot <dev@blackcarrot.be>
+LABEL description="Cryptocurrency Exchange Rate Service"
