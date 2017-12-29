@@ -8,11 +8,14 @@ RUN rm -fr /var/cache/apk/*
 
 WORKDIR /rate-service
 
-COPY . /rate-service
+# first copy package manifest & install, to avoid rebuilding layers every code change
+COPY Gemfile Gemfile.lock /rate-service/
 
 RUN gem install bundler
 RUN bundle config --global silence_root_warning 1
 RUN bundle install --path vendor
+
+COPY . /rate-service
 
 EXPOSE 4568
 
