@@ -2,25 +2,15 @@ version: '2'
 services:
   app:
     build: .
-    #ports:
-    #- "4568:4568"
+    container_name: rate_service
+    restart: always
+    ports:
+      - 127.0.0.1:4568:4568
     links:
-    - redis
+      - redis
     environment:
-    - REDIS_URL=redis://redis:6379/0
+      - REDIS_URL=redis://redis:6379/0
   redis:
     image: redis:alpine
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    links:
-      - app
-    env_file:
-      - nginx-variables.env
-    volumes:
-      - /var/log/nginx/:/logs/
-      - ./config/nginx.conf.template:/etc/nginx/nginx.conf.template
-      - /data/ssl:/ssl
-    command: /bin/ash -c "envsubst '$$NGINX_HOST $$IPV6 $$NGINX_SSL_CERT $$NGINX_SSL_KEY $$NGINX_DHPARAM' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx"
+    container_name: redis
+    restart: always
