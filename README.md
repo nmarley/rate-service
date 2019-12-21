@@ -1,5 +1,7 @@
 # rate-service
 
+_note: Ruby sucks. I'm tired of fighting to update this when a simple patch version bump of one dependency takes a full 1/2 hour debugging session due to gem/bundler issues. This is a terrible ecosystem. I'll try and make a Go version soon, but this service is no longer supported, please use at your own risk. There is a [known rack vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2018-16471) which I can't bother to update (again, because the Ruby software ecosystem sucks)._
+
 An exchange rate API for converting rates between various fiat and
 crypto-currency sources.
 
